@@ -36,9 +36,9 @@ gulp.task('watch', function() {
     ghostMode: false
   });
 
-  gulp.watch('./**/*.php', function() {
+  gulp.watch('./**/*.php', function(cb) {
     browserSync.reload();
-    done();
+    cb();
   });
   gulp.watch(settings.themeLocation + 'css/**/*.css', gulp.parallel('waitForStyles'));
   gulp.watch([settings.themeLocation + 'js/modules/*.js', settings.themeLocation + 'js/scripts.js'], gulp.parallel('waitForScripts'));
@@ -52,5 +52,5 @@ gulp.task('waitForStyles', gulp.series('styles', function() {
 
 gulp.task('waitForScripts', gulp.series('scripts', function(cb) {
   browserSync.reload();
-  cb()
+  cb();
 }))
