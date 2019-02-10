@@ -1,5 +1,13 @@
 <?php
 
+function get_description_or_excerpt() {
+    if(has_excerpt()) {
+        return get_the_excerpt();
+      }
+      
+    return wp_trim_words(get_the_content(), 18);
+}
+
 require get_theme_file_path('/inc/search-route.php');
 
 function university_custom_rest() {
@@ -10,6 +18,8 @@ function university_custom_rest() {
 
 add_action('rest_api_init', 'university_custom_rest');
 
+
+
 function pageBanner($args = NULL) {
     // php logic will live here
 
@@ -17,7 +27,7 @@ function pageBanner($args = NULL) {
         $args['title'] = get_the_title();
     }
 
-    if (!isset($args['subtitle']) && !$args['subtitle']) {
+    if (!isset($args['subtitle'])) {
         $args['subtitle'] = get_field('page_banner_subtitle');
     }
 
