@@ -132,6 +132,7 @@ class Search {
     setTimeout(() => this.searchField.focus(), 301);
     console.log("our open method just ran!");
     this.isOverlayOpen = true;
+    return false; //prevents navigating to the href of the <a> element that fired this event
   }
 
   closeOverlay() {
