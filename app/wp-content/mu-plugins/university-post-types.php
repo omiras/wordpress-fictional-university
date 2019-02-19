@@ -99,6 +99,19 @@ function university_post_types() {
         ),
         'menu_icon' => 'dashicons-heart'
     ));
+
+    register_post_type('slide', array(
+        'supports' => array(''),
+        'public' => true,
+        'labels' => array(
+            'name' => 'Slide',
+            'add_new_item' => 'Add New Slides',
+            'edit_item' => 'Edit Slide',
+            'all_items' => 'All Slides',
+            'singular_name' => 'Slide'
+        ),
+        'menu_icon' => 'dashicons-images-alt2'
+    ));
 }
 
 add_action('init', 'university_post_types'); 
